@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="page-container">
+        {% block sidebar %}
+            {{ parent() }}
+        {% endblock %}
+        {% block main %}
+            {{ parent() }}
+        {% endblock %}
+        <!-- students table list -->
+        <table class="table" style="margin-top: 100px;">
+            <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Nom </th>
+                <th scope="col">Prénom </th>
+                <th scope="col">cin </th>
+                <th scope="col">Details </th>
+
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <th scope="row">1</th>
+                <td>eya</td>
+                <td>ben ali</td>
+                <td>08965785</td>
+
+                <td>
+                    <button class="btn btn-success btn-sm " style="margin:5px;"><b>Modifier</b></button>
+                    <button class="btn btn-danger btn-sm " style="margin:5px;"><b>Supprimer</b></button
+                </td>
+
+            </tr>
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        {% block stylesheets %}{% endblock %}
+        <link rel="shortcut icon" type="image/png" href="{{ asset('assets/images/icon/favicon.ico') }}" />
+        <link rel="stylesheet" type="text/css" async href="{{ asset('assets/css/bootstrap.min.css') }}" />
+        <link rel="stylesheet" type="text/css" async href="{{ asset('assets/css/font-awesome.min.css') }}" />
+        <link rel="stylesheet" type="text/css" async href="{{ asset('assets/css/themify-icons.css') }}" />
+        <link rel="stylesheet" type="text/css" async href="{{ asset('assets/css/metisMenu.css') }}" />
+        <link rel="stylesheet" type="text/css" async href="{{ asset('assets/css/owl.carousel.min.css') }}" />
+        <link rel="stylesheet" type="text/css" async href="{{ asset('assets/css/slicknav.min.css') }}" />
+        <!-- amchart css -->
+        <link rel="stylesheet" type="text/css" async href="{{ asset('https://www.amcharts.com/lib/3/plugins/export/export.css') }}" type="text/css" media="all"  />
+        <!-- others css -->
+        <link rel="stylesheet" type="text/css" async href="{{ asset('assets/css/typography.css') }}" />
+        <link rel="stylesheet" type="text/css" async href="{{ asset('assets/css/default-css.css') }}" />
+        <link rel="stylesheet" type="text/css" async href="{{ asset('assets/css/styles.css') }}" />
+        <link rel="stylesheet" type="text/css" async href="{{ asset('assets/css/responsive.css') }}" />
+        <script defer src="{{ asset('assets/js/vendor/modernizr-2.8.3.min.js') }}"></script>
+
+    </head>
+    <body>
+    {% block body %}
+          {% if is_granted('IS_AUTHENTICATED_FULLY')  %}
+              {% block logout %}
+                    <a href="{{ path('logout') }}" class="btn btn-danger"></a>
+              {% endblock %}
+              <!-- sidebar menu area start -->
+                  {% block sidebar %}
+                      <div class="sidebar-menu">
+                          <div class="main-menu">
+                              <div class="menu-inner">
+                                  <nav>
+                                      <ul class="metismenu" id="menu">
+                                          <li class="active">
+                                              <a href="{{ path('dashbaord') }}" ><i class="ti-dashboard"></i><span>dashboard</span></a>
+                                          </li>
+                                          <li>
+                                              <a href="#" aria-expanded="true"><i class="ti-book"></i><span>Gestion des Formations
+                                                </span></a>
+                                              <ul class="collapse">
+                                                  <li><a href="{{ path('ajouterFormation') }}">Ajouter Formation</a></li>
+                                                  <li><a href="{{ path('listeFormations') }}">Liste des formations</a></li>
+                                              </ul>
+                                          </li>
+                                          <li>
+                                              <a href="#" aria-expanded="true"><i class="fas fa-user-graduate"></i><span>Gestion des Etudiant</span></a>
+                                              <ul class="collapse">
+                                                  <li><a href="{{ path('ajouterEtudiant') }}">Ajouter Etudiant</a></li>
+                                                  <li><a href="{{ path('listeEtudiants') }}">Liste des etudiants</a></li>
+                                              </ul>
+                                          </li>
+                                          <li>
+                                              <a href="#" aria-expanded="true"><i class="fas fa-user-tie"></i><span>Gestions des Formateurs</span></a>
+                                              <ul class="collapse">
+                                                  <li><a href="{{ path('ajouterFormateur') }}">Ajouter Fomateur</a></li>
+                                                  <li><a href="{{ path('listeFormateurs') }}">Liste des formateurs</a></li>
+                                              </ul>
+                                          </li>
+                                          <li>
+                                              <a href="#" aria-expanded="true"><i class="fas fa-book"></i>
+                                                  <span>Matières</span></a>
+                                              <ul class="collapse">
+                                                  <li><a href="{{ path('ajouterMatiere') }}">Ajouter matière</a></li>
+                                                  <li><a href="{{ path('listeMatiere') }}">Liste des matières</a></li>
+                                              </ul>
+                                          </li>
+                                          <li>
+                                              <a href="#" aria-expanded="true"><i class="far fa-file-alt"></i><span>Gestions des evaluations</span></a>
+                                              <ul class="collapse">
+                                                  <li><a href="{{ path('ajouterEvaluation') }}">Ajouter Evaluation</a></li>
+                                                  <li><a href="{{ path('listeEvaluations') }}">Liste des evaluations</a></li>
+                                              </ul>
+                                          </li>
+                                          <li>
+                                              <a href="{{ path('notes') }}" aria-expanded="true"><i class="fas fa-vote-yea"></i>
+                                                  <span>Notes des etudiants</span></a>
+
+                                          </li>
+                                      </ul>
+                                  </nav>
+                              </div>
+                          </div>
+                      </div>
+                      <!-- sidebar menu area end -->
+                  {% endblock %}
+                  {% block main %} <!-- main content area start -->
+
+                            <!-- header area start -->
+                            <div class="header-area">
+                                <div class="row align-items-center">
+                                    <!-- nav and search button -->
+                                    <div class="col-md-6 col-sm-8 clearfix">
+                                        <div class="nav-btn pull-left">
+                                            <span></span>
+                                            <span></span>
+                                            <span></span>
+                                        </div>
+                                        <div class="search-box pull-left">
+                                            <form action="#">
+                                                <input type="text" name="search" placeholder="Search..." required>
+                                                <i class="ti-search"></i>
+                                            </form>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <!-- header area end -->
+                                <!-- page title area start -->
+                                <div class="page-title-area">
+                                    <div class="row align-items-center">
+                                        <div class="col-sm-6">
+                                            <div class="breadcrumbs-area clearfix">
+                                                <h4 class="page-title pull-left">Dashboard</h4>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6 clearfix">
+                                            <div class="user-profile pull-right">
+
+                                                <a class="user-name dropdown-toggle" href="{{ path('logout') }}" >Log Out</a>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- page title area end -->
+
+                             </div>
+
+                            <!-- main content area end -->
+                   {% endblock %}
+
+
+           {% endif %}
+
+    {% endblock %}
+
+    {% block javascripts %}
+    <!-- jquery latest version -->
+    <script src="{{ asset('assets/js/vendor/jquery-2.2.4.min.js') }}"></script>
+    <!-- bootstrap 4 js -->
+    <script defer src="{{ asset('assets/js/popper.min.js') }}"></script>
+    <script defer src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
+    <script defer src="{{ asset('assets/js/owl.carousel.min.js ') }}"></script>
+    <script defer src="{{ asset('assets/js/metisMenu.min.js') }}"></script>
+    <script defer src="{{ asset('assets/js/jquery.slimscroll.min.js') }}"></script>
+    <script defer src="{{ asset('assets/js/jquery.slicknav.min.js') }}"></script>
+    <script defer src="https://kit.fontawesome.com/97dba172ac.js"></script>
+    
+    <!-- others plugins -->
+    <script defer src="{{ asset('assets/js/plugins.js') }}"></script>
+    <script defer src="{{ asset('assets/js/scripts.js') }}"></script>
+        {% endblock %}
+    </body>
+</html>

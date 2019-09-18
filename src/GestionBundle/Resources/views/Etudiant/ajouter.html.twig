@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="page-container">
+        {% block sidebar %}
+            {{ parent() }}
+        {% endblock %}
+        {% block main  %}
+            {{ parent() }}
+        {% endblock %}
+    <div class="container" style="margin-top: 100px">
+        <section class="card">
+            <div class="card-header">
+                <h3 class="card-title">Ajouter Etudiant</h3>
+            </div>
+            <div class="card-body">
+
+                <form action="designer-finish.html" class="form-horizontal" role="form">
+
+                    <div class="form-group">
+                        <label for="name" class="col-sm-3 control-label">Nom </label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" name="name" id="name" placeholder="Tapez votre nom">
+                        </div>
+                    </div> <!-- form-group // -->
+                    <div class="form-group">
+                        <label for="prenom" class="col-sm-3 control-label">Prénom</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" name="prenom" id="prenom" placeholder="Tapez votre prénom">
+                        </div>
+                    </div> <!-- form-group // -->
+                    <div class="form-group">
+                        <label for="cin" class="col-sm-3 control-label">Cin</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" name="" id="cin" placeholder="cotient 8 chiffres">
+                        </div>
+                    </div> <!-- form-group // -->
+
+                    <hr>
+                    <div class="form-group">
+                        <div class="col-sm-offset-3 col-sm-9">
+                            <button type="submit" class="btn btn-primary">Ajouter Etudiant</button>
+                        </div>
+                    </div> <!-- form-group // -->
+                </form>
+
+            </div><!-- card-body // -->
+        </section><!-- card// -->
+    </div>
+    </div>
+
+{% endblock %}

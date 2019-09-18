@@ -1,0 +1,101 @@
+<?php
+
+namespace GestionBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Evaluations
+ *
+ * @ORM\Table(name="evaluations")
+ * @ORM\Entity(repositoryClass="GestionBundle\Repository\EvaluationsRepository")
+ */
+class Evaluations
+{
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="date_evaluation", type="date")
+     */
+    private $dateEvaluation;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nom_evaluation",  type="string", length=255)
+     */
+    private $nom_evaluation;
+
+     /**
+     * @ORM\ManyToOne(targetEntity="Formation", inversedBy="evaluation")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $formations;
+
+    /**
+     * Get id
+     *
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set dateEvaluation
+     *
+     * @param \DateTime $dateEvaluation
+     *
+     * @return Evaluations
+     */
+    public function setDateEvaluation($dateEvaluation)
+    {
+        $this->dateEvaluation = $dateEvaluation;
+
+        return $this;
+    }
+
+    /**
+     * Get dateEvaluation
+     *
+     * @return \DateTime
+     */
+    public function getDateEvaluation()
+    {
+        return $this->dateEvaluation;
+    }
+
+    /**
+     * Set formations
+     *
+     * @param \GestionBundle\Entity\Formation $formations
+     *
+     * @return Evaluations
+     */
+    public function setFormations(\GestionBundle\Entity\Formation $formations)
+    {
+        $this->formations = $formations;
+
+        return $this;
+    }
+
+    /**
+     * Get formations
+     *
+     * @return \GestionBundle\Entity\Formation
+     */
+    public function getFormations()
+    {
+        return $this->formations;
+    }
+}

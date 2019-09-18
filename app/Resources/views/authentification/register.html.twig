@@ -1,0 +1,74 @@
+{% extends 'base.html.twig' %}
+{% block stylesheets %}
+
+{% endblock %}
+{% block body %}
+    <div id="preloader">
+        <div class="loader"></div>
+    </div>
+    <!-- preloader area end -->
+    <!-- login area start -->
+    <div class="login-area login-s2">
+        <div class="container">
+            <div class="login-box ptb--100">
+             {{ form_start(form, {'action': path('user_register'), 'method': 'POST'}) }}
+             
+                <form>
+                    <div class="login-form-head">
+                        <h4>Sign up</h4>
+                    </div>
+                    <div class="login-form-body">
+                        {% for children in form.children %}
+                            {{  form_errors(children) }}
+                        {% endfor %}
+                        
+                            <div class="form-gp">
+                                {{ form_label(form.UserName) }}
+                                {{ form_widget(form.UserName)}}
+
+                                {{ form_errors(form.UserName) }}
+                                <i class="ti-user"></i>
+                            </div>
+                            
+                            <div class="form-gp">
+                                {{ form_label(form.Email) }}
+                                {{ form_widget(form.Email) }}
+                                {{ form_errors(form.Email) }}
+                               
+                                <i class="ti-email"></i>
+                            </div>
+                            <div class="form-gp">
+                                {{ form_label(form.Password.first) }}
+                                {{ form_widget(form.Password.first) }}
+                                {{ form_errors(form.Password.first) }}
+                                <i class="ti-lock"></i>
+                            </div>
+                            <div class="form-gp">
+                                {{ form_label(form.Password.second) }}
+                                {{ form_widget(form.Password.second) }}
+                                {{ form_errors(form.Password.second) }}
+                                <i class="ti-lock"></i>
+                            </div>
+                            <div class="submit-btn-area">
+                            <button type="submit" class="btn btn-primary" formnovalidate><i class="ti-arrow-right"></i>Register</button>
+                            
+                            </div>
+                            <div class="form-footer text-center mt-5">
+                                <a href="{{ path('login') }}">Sign in </a></p>
+                            </div>
+
+                        {% if not form.vars.valid %}
+                            <div class="alert alert-danger">
+                                {{ form_errors(form) }}
+                            </div>
+                        {% endif %}
+
+                        {{ form_end(form) }}
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+
