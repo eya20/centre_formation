@@ -7,33 +7,67 @@
         {% endblock %}
         {% block main %}
             {{ parent() }}
-        {% endblock %}
-        <!-- students table list -->
-        <table class="table" style="margin-top: 100px;">
-            <thead>
-            <tr>
-                <th scope="col">#</th>
-                <th scope="col">Nom </th>
-                <th scope="col">Prénom </th>
-                <th scope="col">cin </th>
-                <th scope="col">Details </th>
+            <!-- header area end -->
+            <!-- page title area start -->
+                <div class="page-title-area mt-5"> <div class="row align-items-center">
+                    <div class="col-sm-6">
+                        <div class="breadcrumbs-area clearfix">
+                            <h3 class="page-title pull-left">Gestion des étudiants</h3>
+                        </div>
+                    </div>
 
-            </tr>
+                </div>
+            </div>
+            <!-- main content area end -->
+
+        {% endblock %}
+        <!-- button add -->
+        <button class="btn btn-primary btn-sm pull-right" data-toggle="modal" data-target="#largemodal" data-remote="/etudiant/addEdit/0">
+            <b>Ajouter</b>
+        </button>
+
+        <div class="clearfix"></div>
+        <!-- formations table list -->
+        <table class="table table-striped mt-5">
+            <thead>
+                <tr>
+                    <th scope="col" width="10%">#</th>
+                    <th scope="col" width="40%">Nom Complet</th>
+                    <th scope="col">Identifiant Unique</th>
+                    <th scope="col">Téléphone</th> 
+                    <th scope="col" class="text-right">Actions</th>
+
+                </tr>
             </thead>
             <tbody>
-            <tr>
-                <th scope="row">1</th>
-                <td>eya</td>
-                <td>ben ali</td>
-                <td>08965785</td>
+                {% for etudiant in etudiants %}
+                <tr>
+                    <th scope="row">
+                        {% if etudiant.image is not null and etudiant.image is defined %} 
+                            <img src="/Photos_des_profils/" ~ {{ etudiant.image  }} alt="Photo" class="col-8 d-block img-fluid rounded-circle mx-auto">
+                        {% endif %}
+                    </th>
+                    <td>{{ etudiant.prenom }} {{ etudiant.nom }}</td>
+                    <td>{{ etudiant.uniqId }}</td>
+                    <td>{{ etudiant.telephone }}</td>
 
-                <td>
-                    <button class="btn btn-success btn-sm " style="margin:5px;"><b>Modifier</b></button>
-                    <button class="btn btn-danger btn-sm " style="margin:5px;"><b>Supprimer</b></button
-                </td>
-
-            </tr>
+                    <td class="text-right">
+                        <a type="button" class="btn btn-info btn-xs mr-1 rounded" href="/etudiant/print/{{ etudiant.id }}" target="_blank">
+                            <i class="fa fa-print" aria-hidden="true"></i>
+                        </a>
+                        <button class="btn btn-dark btn-xs mr-1" data-toggle="modal" data-target="#largemodal" data-remote="/etudiant/addEdit/{{ etudiant.id }}">
+                            <i class="fa fa-pencil" aria-hidden="true"></i>
+                        </button>
+                        <button class="btn btn-danger btn-xs deleteItem" data-remote="/etudiant/delete/{{ etudiant.id }}">
+                            <i class="fa fa-times" aria-hidden="true"></i>
+                        </td>
+                    </td>
+                </tr>
+                {% endfor %}
             </tbody>
         </table>
+
+        <!-- modal pour ajouter et modifier -->
+
     </div>
 {% endblock %}

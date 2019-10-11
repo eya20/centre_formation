@@ -6,41 +6,38 @@
         {% block sidebar %}
             {{ parent() }}
         {% endblock %}
-        {% block main %}
-            {{ parent() }}
-        {% endblock %}
+    {% block main %}
+        {{ parent() }}
+         <!-- header area end -->
+            <!-- page title area start -->
+                <div class="page-title-area mt-5"> <div class="row align-items-center">
+                    <div class="col-sm-6">
+                        <div class="breadcrumbs-area clearfix">
+                            <h3 class="page-title pull-left">Liste de notes de chaque évaluation</h3>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <!-- main content area end -->
+    {% endblock %}
         <div class="container" style="margin-top: 50px;">
+
+            
+            {% for evaluation in evaluations %}
             <table class="table">
-                <thead class="thead-light">
+                <thead>
                 <tr>
-                    <th scope="col"><a href="#" style="color: #8d97ad">Notes des etudiants de Test PHP</a></th>
+                    <th scope="col">Notes des etudiants de {{ evaluation.nomEvaluation }}
+                        <button class="btn btn-primary btn-sm pull-right" data-toggle="modal" data-target="#modal" data-remote="/listeNote/Add/{{ evaluation.id }}">
+                            <b>Ajouter Liste de notes</b>
+                        </button>
+                    </th>
+                    
                 </tr>
                 </thead>
             </table>
-            <table class="table">
-                <thead class="thead-light" >
-                <tr class="offset-1 col-6">
-                    <th scope="col"><a href="#" style="color: #8d97ad">Notes des etudiants de Test PHP</a></th>
-                </tr>
-                </thead>
-
-            </table>
-            <table class="table">
-                <thead class="thead-light" >
-                <tr class="offset-1 col-6">
-                    <th scope="col"><a href="#" style="color: #8d97ad">Notes des etudiants de Test PHP</a></th>
-                </tr>
-                </thead>
-
-            </table>
-            <table class="table">
-                <thead class="thead-light" >
-                <tr class="offset-1 col-6">
-                    <th scope="col"><a href="#" style="color: #8d97ad">Notes des etudiants de Test PHP</a></th>
-                </tr>
-                </thead>
-
-            </table>
+            {% endfor %}
         </div>
     </div>
 

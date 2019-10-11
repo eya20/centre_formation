@@ -1,0 +1,109 @@
+    <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">
+          Formation {{ formation.nom }}</h5>
+        <button type="button" class="close " data-dismiss="modal" aria-label="Close">
+            <span class="pull-right"  aria-hidden="true">&times;</span>
+        </button>
+    </div>
+<div class="modal-body">
+<table class="table table-borderless">
+    
+
+    <tr>
+        <th><h5>Formation</h5></th> 
+        <tr>
+            <th style="border: none !important;width:224px" >Date Début</th><td style="border: none !important;">{{ formation.dateDebut | date('d-m-Y')}}</td></tr>
+            <th style="border: none !important;">Date Fin</th><td style="border: none !important;">{{ formation.dateFin | date('d-m-Y')}}</td>
+            <th style="border: none !important;" >Salle</th><td style="border: none !important;">{{ formation.salle}}</td>
+        </tr>
+    </tr>
+
+
+        {% if formateurs| length > 0 %}
+            <tr>
+                <th><h5>Formateurs</h5></th>
+                {% for formateur in formateurs %}
+                    <tr>
+                        <td style="border: none !important;">{{ formateur.nom }} {{ formateur.prenom }}</td>
+                        <td style="border: none !important;">{{ formateur.email }}</td>
+                        <td style="border: none !important;">{{ formateur.telephone}}</td>
+                    </tr>
+                {% endfor %}
+            </tr>
+        {% endif %}
+     
+    {% if matieres | length > 0%}
+        <tr>
+            <th><h5>Matières</h5></th>
+           
+            <tr>
+                {% for matiere in matieres %}
+                    <td style="border: none !important;">{{ matiere.nom }}</td>
+                {% endfor %}
+            </tr>
+           
+        </tr>
+    {% endif %}
+
+    {% if evaluation %}
+        <tr>
+            <th><h5>Evaluations</h5></th>
+            <tr>
+                <th style="border: none !important;width:224px" >Date d'évaluation </th><td style="border: none !important;">{{ evaluation.dateEvaluation | date('d-m-Y')}}</td>
+            </tr>
+            <tr>
+                <th style="border: none !important;width:224px" >Document(s) d'évaluation </th>
+                {% if  (docs | length > 0) %}
+                    {% for doc in docs %}
+                        <td style="border: none !important;"><a href="{{ asset('Evaluations_documents/' ~ doc.chemin) }}" target="_blank">{{ doc.nom}}</a></td>
+                    {% endfor %}
+                {% endif %}
+            </tr>
+
+        </tr>
+    {% endif %}
+
+    {% if etudiants %}
+    <tr>
+        <th><h5>Etudiants</h5></th>
+           
+                {# {% for etudiant in etudiants.etudiants %} #}
+               
+                    
+                    <td>
+                    {% for etudiant in etudiants.etudiants %}
+                    <p>{{ etudiant.nom }} {{ etudiant.prenom }}</p><br />
+                     {% endfor %}</td>
+                    
+                    <td>{% for paye in paiment.paye %}
+                    <p>{{ paye }}</p><br />
+                     {% endfor %}</td>
+            
+                   <td>
+                    {% for montant in paiment.montant %}
+                    <p> {% if montant == null %} 0 XPF {% else %} {{ montant }} XPF {% endif %}</p><br />
+                     {% endfor %}</td>
+
+                      <td>
+                       {% for etudiant in etudiants.etudiants %} 
+                       <p style="padding-bottom: 20px;" ><button type="button" class="btn btn-dark btn-xs " data-dismiss="modal" data-toggle="modal" data-target="#modal" data-remote="/formation/etudiant/paiment/{{ formation.id }}/{{ etudiant.id}}">
+                    <i class="fa fa-pencil" aria-hidden="true"></i></button></p>
+                    {% endfor %}    
+                    </td>
+
+            </td>
+            
+
+          
+    </tr>
+    {% endif %}
+
+    
+    
+</table>
+</div>
+  <div class="modal-footer">
+        <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Annuler</button>
+         <a type="button" class="btn btn-primary btn-sm rounded" href="/listeEtudiant/print/{{ formation.id }}" target="_blank">Imprimer Liste Etudiants</a>
+</div>
+

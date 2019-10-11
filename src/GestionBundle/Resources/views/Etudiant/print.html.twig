@@ -1,0 +1,54 @@
+<br>
+<h1 align="center">FICHE ETUDIANT</h1>
+<hr>
+<table border="0" cellpadding="5" cellspacing="5" align="left">
+    <tr>
+        <td align="right" colspan="2" >
+            {% if etud.image is not null and etud.image is defined %}
+            <br>    <img src="[TOFF]" alt="Photo" align="right" height="130">
+            {% endif %}
+        </td>
+    </tr> 
+    <tr>
+        <td width="35%">Identifiant :</td>
+        <td>{{ etud.uniqId }}</td>
+    </tr>
+    <tr>
+        <td>Nom complet  :</td>
+        <td>{{ etud.prenom }}
+            {{ etud.nom }}</td>
+    </tr>
+    <tr>
+        <td>Email :</td>
+        <td>{{ etud.email }}</td>
+    </tr>
+    <tr>
+        <td>Téléphone :</td>
+        <td>{{ etud.telephone }}</td>
+    </tr>
+    <tr>
+        <td>Adresse :</td>
+        <td>{{ etud.adresse }}</td>
+    </tr>
+    <tr>
+        <td>Date de naissance  :</td>
+        <td>{{ etud.dateNaissance | date('d/m/Y') }}</td>
+    </tr>
+
+    <tr>
+        <td>Lieu de naissance  :</td>
+        <td>{{ etud.lieuNaissance }}</td>
+    </tr>
+
+    <tr>
+        <td>Niveau :</td>
+        <td>{{ etud.niveau }}</td>
+    </tr>
+
+    {% if etud.note is not null and etud.note is defined %}
+        <tr>
+            <td>Note :</td>
+            <td>{{ etud.note }}</td>
+        </tr>
+    {% endif %}
+</table>

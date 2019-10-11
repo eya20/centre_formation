@@ -1,0 +1,33 @@
+AppBundle\Entity\Evaluations:
+    type: entity
+    table: evaluations
+    indexes:
+        formation_evaluations:
+            columns:
+                - formation
+    id:
+        id:
+            type: bigint
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        dateEvaluation:
+            type: date
+            nullable: false
+            column: date_evaluation
+    manyToOne:
+        formation:
+            targetEntity: Formation
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                formation:
+                    referencedColumnName: id
+            orphanRemoval: true
+    lifecycleCallbacks: {  }

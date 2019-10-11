@@ -1,0 +1,75 @@
+AppBundle\Entity\listeNote:
+    type: entity
+    table: listenote
+    indexes:
+        formation_note:
+            columns:
+                - formation
+        etudiant_note:
+            columns:
+                - etudiant
+        matiere_note:
+            columns:
+                - matiere
+    id:
+        id:
+            type: bigint
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        note:
+            type: string
+            nullable: false
+            length: 255
+            options:
+                fixed: false
+        document:
+            type: string
+            nullable: true
+            length: 255
+            options:
+                fixed: false
+                default: 'NULL'
+        chemin:
+            type: string
+            nullable: true
+            length: 255
+            options:
+                fixed: false
+                default: 'NULL'
+    manyToOne:
+        formation:
+            targetEntity: Formation
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                formation:
+                    referencedColumnName: id
+            orphanRemoval: false
+        etudiant:
+            targetEntity: Etudiant
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                etudiant:
+                    referencedColumnName: id
+            orphanRemoval: false
+        matiere:
+            targetEntity: Matiere
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                matiere:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

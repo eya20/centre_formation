@@ -1,0 +1,43 @@
+AppBundle\Entity\Matiere:
+    type: entity
+    table: matiere
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        nom:
+            type: string
+            nullable: false
+            length: 255
+            options:
+                fixed: false
+        duree:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+                default: 'NULL'
+    manyToMany:
+        formateur:
+            targetEntity: Formateur
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: matiere
+            inversedBy: null
+            joinTable: null
+            orderBy: null
+        formation:
+            targetEntity: Formation
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: matiere
+            inversedBy: null
+            joinTable: null
+            orderBy: null
+    lifecycleCallbacks: {  }

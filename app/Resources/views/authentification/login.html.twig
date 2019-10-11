@@ -14,25 +14,28 @@
 
 
                 <form action="{{ path('login') }}" method="POST">
-                    <div class="login-form-head">
-                        <h4>Sign In</h4>
-                        <p></p>
+                    <div class="login-form-head" style="padding-bottom: 20px;">
+                        <h4>Se Connecter</h4>
+                        <div style="margin-top: 30px;">
+                            <a href="{{ path('dashbaord') }}"><img src="{{ asset('assets/images/icon/logo-ibs.jpg') }}" alt="logo"></a>
+                        </div>
                     </div>
+
                     {% if errors %}
                         <div class="alert alert-danger">
 
-                            {{ errors.messageKey  }}
+                            {{ errors.messageKey|trans(errors.messageData, 'security')  }}
 
                         </div>
                     {% endif %}
                     <div class="login-form-body">
                         <div class="form-gp">
-                            <label for="username">Username</label>
+                            <label for="username">Nom de l'utilisateur</label>
                             <input type="text" name="_username" id="username" value="{{ userName }}">
                             <i class="ti-user"></i>
                         </div>
                         <div class="form-gp">
-                            <label for="Password1">Password</label>
+                            <label for="Password1">Mot de passe</label>
                             <input type="password" id="password" name="_password">
                             <i class="ti-lock"></i>
                         </div>
@@ -40,14 +43,14 @@
                             <div class="col-6">
                             </div>
                             <div class="col-6 text-right">
-                                <a href="#">Forgot Password?</a>
+                                <a href="#">Mot de passe oublié ?</a>
                             </div>
                         </div>
                         <div class="submit-btn-area">
-                            <button id="form_submit" type="submit">Submit <i class="ti-arrow-right"></i></button>
+                            <button id="form_submit" type="submit"><i class="ti-arrow-right"></i>Se Connecter </button>
                         </div>
                         <div class="form-footer text-center mt-5">
-                            <p class="text-muted">Don't have an account? <a href="{{ path('user_register')}}">Sign up</a></p>
+                            <p class="text-muted">Vous n'avez pas de compte <a href="{{ path('user_register')}}">S'iscrire</a></p>
                         </div>
                     </div>
                 </form>

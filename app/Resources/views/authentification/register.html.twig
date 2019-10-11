@@ -14,9 +14,19 @@
              {{ form_start(form, {'action': path('user_register'), 'method': 'POST'}) }}
              
                 <form>
-                    <div class="login-form-head">
-                        <h4>Sign up</h4>
+                    <div class="login-form-head" style="padding-bottom: 20px;">
+                        <h4>S'inscrire</h4>
+                        <div style="margin-top: 30px;">
+                            <a href="{{ path('dashbaord') }}"><img src="{{ asset('assets/images/icon/logo-ibs.jpg') }}" alt="logo"></a>
+                        </div>
                     </div>
+                    {% if not form.vars.valid %}
+                        <div class="alert alert-danger">
+                            {{ form_errors(form) }}
+                            {{ form_errors(form.Password.first) }}
+                        </div>
+                    {% endif %}
+
                     <div class="login-form-body">
                         {% for children in form.children %}
                             {{  form_errors(children) }}
@@ -40,7 +50,7 @@
                             <div class="form-gp">
                                 {{ form_label(form.Password.first) }}
                                 {{ form_widget(form.Password.first) }}
-                                {{ form_errors(form.Password.first) }}
+
                                 <i class="ti-lock"></i>
                             </div>
                             <div class="form-gp">
@@ -50,18 +60,13 @@
                                 <i class="ti-lock"></i>
                             </div>
                             <div class="submit-btn-area">
-                            <button type="submit" class="btn btn-primary" formnovalidate><i class="ti-arrow-right"></i>Register</button>
+                            <button type="submit" class="btn btn-primary" formnovalidate><i class="ti-arrow-right"></i>S'inscrire</button>
                             
                             </div>
                             <div class="form-footer text-center mt-5">
-                                <a href="{{ path('login') }}">Sign in </a></p>
+                                <a href="{{ path('login') }}">Se Connecter </a></p>
                             </div>
 
-                        {% if not form.vars.valid %}
-                            <div class="alert alert-danger">
-                                {{ form_errors(form) }}
-                            </div>
-                        {% endif %}
 
                         {{ form_end(form) }}
                     </div>

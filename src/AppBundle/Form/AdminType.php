@@ -9,7 +9,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use GestionBundle\Entity\Admin;
+use AppBundle\Entity\Admin;
 
 
 class AdminType extends AbstractType {
@@ -17,13 +17,17 @@ class AdminType extends AbstractType {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-        ->add('UserName',TextType::class)
-        ->add('Email', EmailType::class)
+        ->add('UserName',TextType::class, [
+            'label' => " Nom de l'utilisateur "
+        ])
+        ->add('Email', EmailType::class, [
+            'label' => 'Email'
+        ])
         ->add('Password', RepeatedType::class, [
              'type' => PasswordType::class,
-            'invalid_message' => 'The password fields must match.',
-            'first_options'  => ['label' => 'Password'],
-            'second_options' => ['label' => 'Repeat Password'],
+            'invalid_message' => 'Votre mot de passe ne correspond pas.',
+            'first_options'  => ['label' => 'Mot de passe'],
+            'second_options' => ['label' => 'Confirmer mot de passe'],
         ]);
     }
 

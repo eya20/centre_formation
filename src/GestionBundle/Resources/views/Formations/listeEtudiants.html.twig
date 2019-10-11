@@ -1,0 +1,70 @@
+
+<link href="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.5.0/css/bootstrap4-toggle.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.5.0/js/bootstrap4-toggle.min.js"></script>
+<div class="modal-header">
+    <h5 class="modal-title" id="exampleModalLabel">
+     Liste Des Etudiants   </h5>
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<form action="{{ path('Etudiantpaiment' , { "idf" : formation.id, "id": etudiant.id } )}}" method="POST" >
+    <div class="modal-body">
+    
+            <div class="form-group row">
+                    <label for="etudiant" class="col-form-label col-sm-4">Etudiant :</label>
+                    <div class="col-sm-8">
+                        <p>{{ etudiant.nom }} {{ etudiant.prenom }}</p>
+                    </div>
+            </div>
+             
+             {% if etudiantformation.paye == "payé" %}
+             <div class="form-group row">
+                    <label for="paye" class="col-form-label col-sm-4">Paiment</label>
+                    <div class="col-sm-8">
+                       <input type="checkbox" checked name="paye" data-toggle="toggle" data-size="xs">
+                    </div>
+                </div>
+            {% else %}
+                <div class="form-group row">
+                    <label for="paye" class="col-form-label col-sm-4">Paiment</label>
+                    <div class="col-sm-8">
+                       <input type="checkbox" name="paye" data-toggle="toggle" data-size="xs">
+                    </div>
+                </div>
+            {% endif %}
+                
+                {% if etudiantformation.montant %}
+                <div class="form-group row">
+                    <label for="montant" class="col-form-label col-sm-4">Montant</label>
+                    <div class="col-sm-8">
+                        <input name="montant" type="text" class="form-control col-4" Value="{{ etudiantformation.montant }}">
+                    </div>
+                </div>
+                {% else %}
+                <div class="form-group row">
+                    <label for="montant" class="col-form-label col-sm-4">Montant</label>
+                    <div class="col-sm-6">
+                    <input name="montant" type="text" class="form-control col-4" Value="0" >
+                    </div>
+                </div>
+                {% endif %}
+        
+             <div class="modal-footer">
+            <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Annuler</button>
+             <button type="Submit" class="btn btn-primary btn-sm" >Valider</button>
+           
+
+        </div>
+       
+        </form>
+         
+    </div>
+
+
+
+
+
+
+
+

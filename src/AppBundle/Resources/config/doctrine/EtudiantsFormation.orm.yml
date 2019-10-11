@@ -1,0 +1,61 @@
+AppBundle\Entity\EtudiantsFormation:
+    type: entity
+    table: etudiants_formation
+    indexes:
+        formation_etudiants:
+            columns:
+                - formation
+        etudiants_formation:
+            columns:
+                - etudiant
+    id:
+        etudiantFormationId:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: etudiant_formation_id
+            generator:
+                strategy: IDENTITY
+    fields:
+        paye:
+            type: string
+            nullable: true
+            length: 255
+            options:
+                fixed: false
+                default: 'NULL'
+        montant:
+            type: float
+            nullable: false
+
+        date:
+            type: date
+            nullable: false
+            column: date
+
+    manyToOne:
+        etudiant:
+            targetEntity: Etudiant
+            cascade: ["persist"]
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                etudiant:
+                    referencedColumnName: id
+                    OnDelate: CASCADE
+            orphanRemoval: false
+        formation:
+            targetEntity: Formation
+            cascade: ["persist"]
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                formation:
+                    referencedColumnName: id
+                    OnDelate: CASCADE
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

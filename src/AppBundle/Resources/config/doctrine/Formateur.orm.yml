@@ -1,0 +1,70 @@
+AppBundle\Entity\Formateur:
+    type: entity
+    table: formateur
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        nom:
+            type: string
+            nullable: false
+            length: 255
+            options:
+                fixed: false
+        prenom:
+            type: string
+            nullable: false
+            length: 255
+            options:
+                fixed: false
+        uniqId:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            column: uniq_id
+        email:
+            type: string
+            nullable: false
+            length: 200
+            options:
+                fixed: false
+        telephone:
+            type: string
+            nullable: false
+            length: 200
+            options:
+                fixed: false
+    manyToMany:
+        matiere:
+            targetEntity: Matiere
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: formateur
+            joinTable:
+                name: formateur_matiere
+                joinColumns:
+                    -
+                        name: formateur
+                        referencedColumnName: id
+                inverseJoinColumns:
+                    -
+                        name: matiere
+                        referencedColumnName: id
+            orderBy: null
+        formation:
+            targetEntity: Formation
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: formateur
+            inversedBy: null
+            joinTable: null
+            orderBy: null
+    lifecycleCallbacks: {  }

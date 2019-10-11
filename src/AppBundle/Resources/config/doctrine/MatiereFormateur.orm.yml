@@ -1,0 +1,42 @@
+AppBundle\Entity\MatiereFormateur:
+    type: entity
+    table: matiere_formateur
+    indexes:
+        IDX_28782D69F46CD258:
+            columns:
+                - matiere
+        IDX_28782D69155D8F51:
+            columns:
+                - formateur
+    id:
+        matiereFormateurId:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: matiere_formateur_id
+            generator:
+                strategy: IDENTITY
+    manyToOne:
+        formateur:
+            targetEntity: Formateur
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                formateur:
+                    referencedColumnName: id
+            orphanRemoval: false
+        matiere:
+            targetEntity: Matiere
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                matiere:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

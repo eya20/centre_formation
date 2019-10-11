@@ -1,0 +1,29 @@
+<br>
+<h1 align="center">FICHE FORMATION INFORMATIONS</h1>
+<hr><br>
+<table border="1" >
+    <thead>
+        <tr>
+            <th scope="col"># </th>
+            <th scope="col">Désignation</th>
+            <th scope="col">Date Début</th>
+            <th scope="col">Date FIN</th>
+            <th scope="col">Salle</th>
+        </tr>
+    </thead>
+
+     {% for formation in formations %}
+     {% if formation.dateSuppression == null %}
+
+    <tr>
+        <td>{{ formation.id }}</td>
+        <td>{{ formation.nom }}</td>
+        <td>{{ formation.dateDebut| date("d-m-Y") }}</td>
+        <td>{{ formation.dateFin| date("d-m-Y") }}</td>
+        <td>{{ formation.salle }}</td>
+ 
+    </tr>
+    {% endif %}
+    {% endfor %}
+
+</table>

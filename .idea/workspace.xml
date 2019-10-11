@@ -1,7 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2252cb39-c2ec-4bcd-8680-2b9ee6b05e28" name="Default Changelist" comment="" />
+    <list default="true" id="2252cb39-c2ec-4bcd-8680-2b9ee6b05e28" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/config/config.yml" beforeDir="false" afterPath="$PROJECT_DIR$/app/config/config.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/config/services.yml" beforeDir="false" afterPath="$PROJECT_DIR$/app/config/services.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AppBundle/Entity/Etudiant.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/AppBundle/Entity/Etudiant.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GestionBundle/Controller/EtudiantController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/GestionBundle/Controller/EtudiantController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GestionBundle/Resources/config/services.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/GestionBundle/Resources/config/services.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GestionBundle/Resources/views/Etudiant/addEditForm.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/GestionBundle/Resources/views/Etudiant/addEditForm.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GestionBundle/Resources/views/Evaluations/listeEvaluations.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/GestionBundle/Resources/views/Evaluations/listeEvaluations.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GestionBundle/Resources/views/Formateurs/listeFormateurs.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/GestionBundle/Resources/views/Formateurs/listeFormateurs.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GestionBundle/Resources/views/Formations/listeFormations.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/GestionBundle/Resources/views/Formations/listeFormations.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GestionBundle/Resources/views/Matiere/listeMatieres.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/GestionBundle/Resources/views/Matiere/listeMatieres.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GestionBundle/Resources/views/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/GestionBundle/Resources/views/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GestionBundle/Resources/views/note/notes.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/GestionBundle/Resources/views/note/notes.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GestionBundle/Service/EtudiantService.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/GestionBundle/Service/EtudiantService.php" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -89,7 +104,14 @@
       <option name="presentableId" value="Default" />
       <updated>1568709209832</updated>
       <workItem from="1568709212252" duration="24349000" />
-      <workItem from="1568792663299" duration="13388000" />
+      <workItem from="1568792663299" duration="21823000" />
+      <workItem from="1568878583644" duration="12765000" />
+      <workItem from="1568898787441" duration="7947000" />
+      <workItem from="1568908236830" duration="2038000" />
+      <workItem from="1568964930865" duration="1806000" />
+      <workItem from="1569225533781" duration="3898000" />
+      <workItem from="1569312051879" duration="63000" />
+      <workItem from="1569312116693" duration="609000" />
     </task>
     <servers />
   </component>
@@ -101,7 +123,9 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>
@@ -111,24 +135,9 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/app/Resources/views/base.html.twig</url>
-          <line>31</line>
-          <option name="timeStamp" value="9" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/app/Resources/views/base.html.twig</url>
-          <line>32</line>
-          <option name="timeStamp" value="12" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/src/GestionBundle/Resources/views/Formations/ajouter.html.twig</url>
-          <line>14</line>
-          <option name="timeStamp" value="14" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/src/GestionBundle/Resources/views/Formations/listeFormations.html.twig</url>
-          <line>11</line>
-          <option name="timeStamp" value="15" />
+          <line>25</line>
+          <option name="timeStamp" value="18" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

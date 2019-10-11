@@ -1,0 +1,95 @@
+
+<br>
+<h1 align="center">FICHE FORMATION INFORMATIONS</h1>
+<hr><br>
+<table border="0" >
+
+<tr><td>
+    <h2>Formation </h2>
+    <table border="0">
+        <thead>
+            <tr>
+               <th></th>
+            </tr>
+        </thead> 
+            <tr>
+                <td>Date Début: {{ formation.dateDebut | date('d-m-Y')}}</td>
+                <td>Date Fin: {{ formation.dateFin | date('d-m-Y')}}</td>
+                <td>Salle: {{ formation.salle}}</td><tr>
+            </tr>
+    </table>
+</td></tr>
+
+<tr><td>
+<h2>Matières </h2>
+    {% if matieres %}
+    <table border="1" >
+        <tr>
+            {% for matiere in matieres %}
+                <td >{{ matiere.nom }}</td>
+            {% endfor %}
+        </tr>
+    </table>  
+    {% endif %}
+</td></tr>
+
+<tr><td>
+    <h2>Evaluations </h2>
+    {% if evaluation %}
+        <table border="0" >
+            <tr>
+                <td >Date d'évaluation: {{ evaluation.dateEvaluation | date('d-m-Y')}}</td>
+            </tr>
+        </table>
+    {% endif %}
+</td></tr>
+
+
+<tr><td>
+    <h2>Formateurs </h2>
+    {% if formateurs %}
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Nom Formateur</th>
+                    <th> Email</th>
+                    <th>Téléphone</th>
+                </tr>
+            </thead>
+            {% for formateur in formateurs %}
+                <tr>
+                    <td >{{ formateur.nom }} {{ formateur.prenom }}</td><br />
+                    <td >{{ formateur.email }}</td><br />
+                    <td >{{ formateur.telephone}}</td><br />
+                </tr>
+            {% endfor %}
+        </table>
+    {% endif %}
+</td></tr>
+
+<tr><td>
+    <h2>Etudiants </h2>
+    {% if etudiants %}
+        <table border="1">
+            <thead >
+                <tr>
+                    <th>Nom Complet </th>
+                    <th>Téléphone</th>
+                    <th>Email</th>
+                </tr>
+            </thead>
+            {% for etudiant in etudiants %}
+                <tr>
+                    <td >{{etudiant.nom}} {{etudiant.prenom}}</td><br />
+                    <td >{{etudiant.telephone}}</td><br />
+                    <td >{{etudiant.email}}</td><br />
+                </tr>
+            {% endfor %}
+        </table>
+    {% endif %}
+</td></tr>
+
+
+
+    
+</table>

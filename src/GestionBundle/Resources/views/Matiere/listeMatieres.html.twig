@@ -7,31 +7,54 @@
         {% endblock %}
         {% block main %}
             {{ parent() }}
+            <!-- header area end -->
+            <!-- page title area start -->
+            <!-- header area end -->
+            <!-- page title area start -->
+                <div class="page-title-area mt-5"> <div class="row align-items-center">
+                    <div class="col-sm-6">
+                        <div class="breadcrumbs-area clearfix">
+                            <h3 class="page-title pull-left">Gestion des Matières</h3>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <!-- main content area end -->
         {% endblock %}
+        <!-- button add -->
+        <button class="btn btn-primary btn-sm pull-right" data-toggle="modal" data-target="#modal" data-remote="/matieres/addEdit/0">
+            <b>Ajouter</b>
+        </button>
         <!-- students table list -->
+
         <table class="table" style="margin-top: 100px;">
             <thead>
-            <tr>
-                <th scope="col">#</th>
-                <th scope="col">Nom </th>
-                <th scope="col">Formateurs </th>
-                <th scope="col">Details </th>
-
-
-            </tr>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Nom
+                    </th>
+                    <th scope="col" class="text-right">Actions</th>
+                </tr>
             </thead>
             <tbody>
-            <tr>
-                <th scope="row">1</th>
-                <td>eya</td>
-                <td>eya</td>
-                <td>
-                    <button class="btn btn-success btn-sm " style="margin:5px;"><b>Modifier</b></button>
-                    <button class="btn btn-danger btn-sm " style="margin:5px;"><b>Supprimer</b></button
-                </td>
-
-            </tr>
+                {% for matiere in matieres %}
+                    <tr>
+                        <th scope="row">{{ matiere.id }}</th>
+                        <td>{{ matiere.nom }}</td>
+                        <td class="text-right">
+                            <button class="btn btn-dark btn-xs " data-toggle="modal" data-target="#modal" data-remote="/matieres/addEdit/{{ matiere.id }}">
+                                <i class="fa fa-pencil" aria-hidden="true"></i>
+                            </button>
+                            <button class="btn btn-danger btn-xs deleteItem" data-remote="/matiere/delete/{{ matiere.id }}">
+                                <i class="fa fa-times" aria-hidden="true"></i>
+                            </button>
+                        </td>
+                    </tr>
+                {% endfor %}
             </tbody>
         </table>
+        <!-- modal pour ajouter et modifier -->
+        
     </div>
 {% endblock %}

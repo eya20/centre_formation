@@ -1,0 +1,42 @@
+AppBundle\Entity\MatiereDocument:
+    type: entity
+    table: matiere_document
+    indexes:
+        matiere_document:
+            columns:
+                - matiere
+    id:
+        documentId:
+            type: bigint
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: document_id
+            generator:
+                strategy: IDENTITY
+    fields:
+        nom:
+            type: string
+            nullable: false
+            length: 200
+            options:
+                fixed: false
+        chemin:
+            type: string
+            nullable: false
+            length: 200
+            options:
+                fixed: false
+    manyToOne:
+        matiere:
+            targetEntity: Matiere
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                matiere:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

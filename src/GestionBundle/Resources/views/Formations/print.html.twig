@@ -1,0 +1,29 @@
+<br>
+<h1 align="center">FICHE LISTE DES ETUDIANTS</h1>
+<hr>
+<table border="1" cellpadding="5" cellspacing="5" align="left" style="margin-top:80px;">
+
+     <thead>
+                <tr>
+                    <th scope="col">Identifiant </th>
+                    <th scope="col">Nom Complet</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Téléphone</th>
+                    <th scope="col">Adresse</th>
+                </tr>
+    </thead>
+    
+    {% for etudiant in etudiants %}
+
+    <tr>
+        <td>{{ etudiant.uniqId }}</td>
+        <td>{{ etudiant.prenom }}
+            {{ etudiant.nom }}</td>
+        <td>{{ etudiant.email }}</td>
+        <td>{{ etudiant.telephone }}</td>
+        <td>{{ etudiant.adresse }}</td>
+ 
+    </tr>
+    {% endfor %}
+
+</table>

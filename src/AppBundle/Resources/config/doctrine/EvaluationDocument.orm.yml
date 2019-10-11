@@ -1,0 +1,54 @@
+AppBundle\Entity\EvaluationDocument:
+    type: entity
+    table: evaluation_document
+    indexes:
+        formation_document:
+            columns:
+                - formation
+        evaluations_document:
+            columns:
+                - evaluation
+    id:
+        id:
+            type: bigint
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        nom:
+            type: string
+            nullable: false
+            length: 255
+            options:
+                fixed: false
+        chemin:
+            type: string
+            nullable: false
+            length: 255
+            options:
+                fixed: false
+    manyToOne:
+        evaluation:
+            targetEntity: Evaluations
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                evaluation:
+                    referencedColumnName: id
+            orphanRemoval: false
+        formation:
+            targetEntity: Formation
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                formation:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

@@ -5,10 +5,26 @@
         {% block sidebar %}
             {{ parent() }}
         {% endblock %}
-        {% block main %}
-            {{ parent() }}
+            {% block main %}
+                {{ parent() }}
+                 <!-- header area end -->
+            <!-- page title area start -->
+                <div class="page-title-area mt-5"> <div class="row align-items-center">
+                    <div class="col-sm-6">
+                        <div class="breadcrumbs-area clearfix">
+                            <h3 class="page-title pull-left">Gestion des Evaluations</h3>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <!-- main content area end -->
+
         {% endblock %}
-        <!-- formations table list -->
+        <!-- button add -->
+        <button class="btn btn-primary btn-sm pull-right" data-toggle="modal" data-target="#modal" data-remote="/evaluation/addEdit/0">
+            <b>Ajouter</b>
+        </button>
         <table class="table" style="margin-top: 100px;">
             <thead>
             <tr>
@@ -16,24 +32,27 @@
                 <th scope="col">Nom de l'evaluation</th>
                 <th scope="col">Date de l'evalution </th>
                 <th scope="col">Formation </th>
-                <th scope="col">Details </th>
+                <th scope="col">Action </th>
 
             </tr>
             </thead>
             <tbody>
+            {% for evaluation in evaluations %}
             <tr>
-                <th scope="row">1</th>
-                <td>Test PHP</td>
-                <td>18/08/2019</td>
-                <td>formation PHP</td>
+                <th scope="row">{{ evaluation.id }}</th>
+                <td>{{ evaluation.NomEvaluation }}</td>
+                <td>{{ evaluation.dateEvaluation|date("d-m-Y H:i") }}</td>
+                <td>{{ evaluation.formation.nom }} </td>
                 <td>
-                    <button class="btn btn-success btn-sm " style="margin:5px;"><b>Modifier</b></button>
-                    <button class="btn btn-danger btn-sm " style="margin:5px;"><b>Supprimer</b></button>
-                </td>
 
+                   <button class="btn btn-dark btn-xs " data-toggle="modal" data-target="#modal" data-remote="/evaluation/addEdit/{{ evaluation.id }}"><i class="fa fa-pencil" aria-hidden="true"></i></button>
+                     <button class="btn btn-danger btn-xs deleteItem" data-remote="/evaluation/delete/{{ evaluation.id }}">
+                            <i class="fa fa-times" aria-hidden="true"></i></button>
+                </td>
             </tr>
+            {% endfor %}
             </tbody>
         </table>
-    </div>
+        
 
 {% endblock %}

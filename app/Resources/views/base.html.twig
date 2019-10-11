@@ -1,157 +1,255 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta charset="UTF-8" />
-        <title>{% block title %}Welcome!{% endblock %}</title>
+        <meta charset="UTF-8"/>
+        <title>
+            {% block title %} IBS Formation
+            {% endblock %}
+        </title>
         {% block stylesheets %}{% endblock %}
-        <link rel="shortcut icon" type="image/png" href="{{ asset('assets/images/icon/favicon.ico') }}" />
-        <link rel="stylesheet" type="text/css" async href="{{ asset('assets/css/bootstrap.min.css') }}" />
-        <link rel="stylesheet" type="text/css" async href="{{ asset('assets/css/font-awesome.min.css') }}" />
-        <link rel="stylesheet" type="text/css" async href="{{ asset('assets/css/themify-icons.css') }}" />
-        <link rel="stylesheet" type="text/css" async href="{{ asset('assets/css/metisMenu.css') }}" />
-        <link rel="stylesheet" type="text/css" async href="{{ asset('assets/css/owl.carousel.min.css') }}" />
-        <link rel="stylesheet" type="text/css" async href="{{ asset('assets/css/slicknav.min.css') }}" />
+        
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <script src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js" type="text/javascript"></script>
+        <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" />
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.0/css/bootstrap-datepicker.css">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.10/css/select2.min.css" rel="stylesheet" />
+        <link rel="shortcut icon" type="image/png" href="{{ asset('assets/images/icon/favicon.ico') }}"/>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" async href="{{ asset('assets/css/font-awesome.min.css') }}"/>
+        <link rel="stylesheet" type="text/css" async href="{{ asset('assets/css/themify-icons.css') }}"/>
+        <link rel="stylesheet" type="text/css" async href="{{ asset('assets/css/metisMenu.css') }}"/>
+        <link rel="stylesheet" type="text/css" async href="{{ asset('assets/css/owl.carousel.min.css') }}"/>
+        <link
+        rel="stylesheet" type="text/css" async href="{{ asset('assets/css/slicknav.min.css') }}"/>
         <!-- amchart css -->
-        <link rel="stylesheet" type="text/css" async href="{{ asset('https://www.amcharts.com/lib/3/plugins/export/export.css') }}" type="text/css" media="all"  />
+        <link
+        rel="stylesheet" type="text/css" async href="{{ asset('https://www.amcharts.com/lib/3/plugins/export/export.css') }}" type="text/css" media="all"/>
         <!-- others css -->
-        <link rel="stylesheet" type="text/css" async href="{{ asset('assets/css/typography.css') }}" />
-        <link rel="stylesheet" type="text/css" async href="{{ asset('assets/css/default-css.css') }}" />
-        <link rel="stylesheet" type="text/css" async href="{{ asset('assets/css/styles.css') }}" />
-        <link rel="stylesheet" type="text/css" async href="{{ asset('assets/css/responsive.css') }}" />
+        <link rel="stylesheet" type="text/css" async href="{{ asset('assets/css/typography.css') }}"/>
+        <link rel="stylesheet" type="text/css" async href="{{ asset('assets/css/default-css.css') }}"/>
+        <link rel="stylesheet" type="text/css" async href="{{ asset('assets/css/styles.css') }}"/>
+        <link rel="stylesheet" type="text/css" async href="{{ asset('assets/css/responsive.css') }}"/>
         <script defer src="{{ asset('assets/js/vendor/modernizr-2.8.3.min.js') }}"></script>
-
+        <link href="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.5.0/css/bootstrap4-toggle.min.css" rel="stylesheet">
+    
     </head>
     <body>
-    {% block body %}
-          {% if is_granted('IS_AUTHENTICATED_FULLY')  %}
-              {% block logout %}
-                    <a href="{{ path('logout') }}" class="btn btn-danger"></a>
-              {% endblock %}
-              <!-- sidebar menu area start -->
-                  {% block sidebar %}
-                      <div class="sidebar-menu">
-                          <div class="main-menu">
-                              <div class="menu-inner">
-                                  <nav>
-                                      <ul class="metismenu" id="menu">
-                                          <li class="active">
-                                              <a href="{{ path('dashbaord') }}" ><i class="ti-dashboard"></i><span>dashboard</span></a>
-                                          </li>
-                                          <li>
-                                              <a href="#" aria-expanded="true"><i class="ti-book"></i><span>Gestion des Formations
-                                                </span></a>
-                                              <ul class="collapse">
-                                                  <li><a href="{{ path('ajouterFormation') }}">Ajouter Formation</a></li>
-                                                  <li><a href="{{ path('listeFormations') }}">Liste des formations</a></li>
-                                              </ul>
-                                          </li>
-                                          <li>
-                                              <a href="#" aria-expanded="true"><i class="fas fa-user-graduate"></i><span>Gestion des Etudiant</span></a>
-                                              <ul class="collapse">
-                                                  <li><a href="{{ path('ajouterEtudiant') }}">Ajouter Etudiant</a></li>
-                                                  <li><a href="{{ path('listeEtudiants') }}">Liste des etudiants</a></li>
-                                              </ul>
-                                          </li>
-                                          <li>
-                                              <a href="#" aria-expanded="true"><i class="fas fa-user-tie"></i><span>Gestions des Formateurs</span></a>
-                                              <ul class="collapse">
-                                                  <li><a href="{{ path('ajouterFormateur') }}">Ajouter Fomateur</a></li>
-                                                  <li><a href="{{ path('listeFormateurs') }}">Liste des formateurs</a></li>
-                                              </ul>
-                                          </li>
-                                          <li>
-                                              <a href="#" aria-expanded="true"><i class="fas fa-book"></i>
-                                                  <span>Matières</span></a>
-                                              <ul class="collapse">
-                                                  <li><a href="{{ path('ajouterMatiere') }}">Ajouter matière</a></li>
-                                                  <li><a href="{{ path('listeMatiere') }}">Liste des matières</a></li>
-                                              </ul>
-                                          </li>
-                                          <li>
-                                              <a href="#" aria-expanded="true"><i class="far fa-file-alt"></i><span>Gestions des evaluations</span></a>
-                                              <ul class="collapse">
-                                                  <li><a href="{{ path('ajouterEvaluation') }}">Ajouter Evaluation</a></li>
-                                                  <li><a href="{{ path('listeEvaluations') }}">Liste des evaluations</a></li>
-                                              </ul>
-                                          </li>
-                                          <li>
-                                              <a href="{{ path('notes') }}" aria-expanded="true"><i class="fas fa-vote-yea"></i>
-                                                  <span>Notes des etudiants</span></a>
+        {% for message in app.flashes('success') %}
+            <div class="alert alert-success notification" role="alert">
+                {{ message }}
+            </div>
+        {% endfor %}
 
-                                          </li>
-                                      </ul>
-                                  </nav>
-                              </div>
-                          </div>
-                      </div>
-                      <!-- sidebar menu area end -->
-                  {% endblock %}
-                  {% block main %} <!-- main content area start -->
+        {% for message in app.flashes('error') %}
+            <div class="alert alert-danger notification" role="alert">
+                {{ message }}
+            </div>
+        {% endfor %}
 
-                            <!-- header area start -->
-                            <div class="header-area">
-                                <div class="row align-items-center">
-                                    <!-- nav and search button -->
-                                    <div class="col-md-6 col-sm-8 clearfix">
-                                        <div class="nav-btn pull-left">
-                                            <span></span>
-                                            <span></span>
-                                            <span></span>
-                                        </div>
-                                        <div class="search-box pull-left">
-                                            <form action="#">
-                                                <input type="text" name="search" placeholder="Search..." required>
-                                                <i class="ti-search"></i>
-                                            </form>
-                                        </div>
+        {% block body %}
+
+            {% if is_granted('IS_AUTHENTICATED_FULLY')  %}
+                <!-- sidebar menu area start -->
+                {% block sidebar %}
+                    <div class="sidebar-menu">
+                        <div class="sidebar-header">
+                            <div>
+                                <a href="{{ path('dashbaord') }}"><img src="{{ asset('assets/images/icon/logo-ibs.jpg') }}" alt="logo"></a>
+                            </div>
+                        </div>
+                        <div class="main-menu">
+                            <div class="menu-inner">
+                                <nav>
+                                    <ul class="metismenu" id="menu">
+                                        <li class="active">
+                                            <a href="{{ path('dashbaord') }}">
+                                                <i class="ti-dashboard"></i>
+                                                <span>dashboard</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="{{ path('listeFormations') }}" aria-expanded="true">
+                                                <i class="ti-book"></i>
+                                                <span>Gestion des Formations
+                                                </span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="{{ path('listeEtudiants') }}" aria-expanded="true">
+                                                <i class="fas fa-user-graduate"></i>
+                                                <span>Gestion des Etudiants</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="{{ path('listeFormateurs') }}" aria-expanded="true">
+                                                <i class="fas fa-user-tie"></i>
+                                                <span>Gestions des Formateurs</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="{{ path('listeMatiere') }}" aria-expanded="true">
+                                                <i class="fas fa-book"></i>
+                                                <span>Matières</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- sidebar menu area end -->
+                {% endblock %}
+                {% block main %}
+                    <!-- main content area start -->
+
+                    <!-- header area start -->
+                        <div class="header-area">  <div>
+                             <div class="row align-items-center">
+                                <!-- nav and search button -->
+                                <div class="col-md-6 col-sm-8 clearfix">
+                                    <div class="nav-btn pull-left">
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
                                     </div>
-
-                                </div>
-                                <!-- header area end -->
-                                <!-- page title area start -->
-                                <div class="page-title-area">
-                                    <div class="row align-items-center">
-                                        <div class="col-sm-6">
-                                            <div class="breadcrumbs-area clearfix">
-                                                <h4 class="page-title pull-left">Dashboard</h4>
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-6 clearfix">
-                                            <div class="user-profile pull-right">
-
-                                                <a class="user-name dropdown-toggle" href="{{ path('logout') }}" >Log Out</a>
-
-                                            </div>
-                                        </div>
+                                    <div class="search-box pull-left">
+                                        <form action="#">
+                                            <input type="text" value="{{app.request.get('search')}}" name="search" placeholder="Rechercher..." required>
+                                            <i class="ti-search"></i>
+                                        </form>
                                     </div>
                                 </div>
-                                <!-- page title area end -->
+                                <div class="col-sm-6 clearfix">
+                                    <div class="btn pull-right">
 
-                             </div>
+                                        <a href="{{ path('logout') }}" title="Se Déconnecter" class="text-dark">
+                                            <i class="fa-5 fa fa-sign-out" aria-hidden="true" style="font-size:20px"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            
+                            </div>
+                       
+                    {% endblock %}
+                    <!-- header area end -->
+                    <!-- page title area start -->
+                    <div class="page-title-area">
+                        <div class="row align-items-center">
 
-                            <!-- main content area end -->
-                   {% endblock %}
+                            <div class="col-sm-6">
+                                <div class="breadcrumbs-area clearfix">
+                                    <h4 class="page-title pull-left">Dashboard</h4>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6 clearfix">
+                                <div class="btn btn-primary pull-right">
+
+                                    <a class="user-name dropdown-toggle" href="{{ path('logout') }}">Se Déconnecter</a>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- page title area end -->
+
+                </div>
 
 
-           {% endif %}
+                <!-- main content area end -->
 
-    {% endblock %}
 
-    {% block javascripts %}
-    <!-- jquery latest version -->
-    <script src="{{ asset('assets/js/vendor/jquery-2.2.4.min.js') }}"></script>
-    <!-- bootstrap 4 js -->
-    <script defer src="{{ asset('assets/js/popper.min.js') }}"></script>
-    <script defer src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
-    <script defer src="{{ asset('assets/js/owl.carousel.min.js ') }}"></script>
-    <script defer src="{{ asset('assets/js/metisMenu.min.js') }}"></script>
-    <script defer src="{{ asset('assets/js/jquery.slimscroll.min.js') }}"></script>
-    <script defer src="{{ asset('assets/js/jquery.slicknav.min.js') }}"></script>
-    <script defer src="https://kit.fontawesome.com/97dba172ac.js"></script>
-    
-    <!-- others plugins -->
-    <script defer src="{{ asset('assets/js/plugins.js') }}"></script>
-    <script defer src="{{ asset('assets/js/scripts.js') }}"></script>
+            {% endif %}
+
         {% endblock %}
+
+        {% block javascripts %}
+           <!-- jquery latest version -->
+            <script src="{{ asset('assets/js/vendor/jquery-2.2.4.min.js') }}"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.10/js/select2.min.js"></script>
+            <script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.0/js/bootstrap-datepicker.min.js"></script>
+            <!-- bootstrap 4 js -->
+            <script defer src="{{ asset('assets/js/popper.min.js') }}"></script>
+            <script defer src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
+            <script defer src="{{ asset('assets/js/owl.carousel.min.js ') }}"></script>
+            <script defer src="{{ asset('assets/js/metisMenu.min.js') }}"></script>
+            <script defer src="{{ asset('assets/js/jquery.slimscroll.min.js') }}"></script>
+            <script defer src="{{ asset('assets/js/jquery.slicknav.min.js') }}"></script>
+            <script defer src="https://kit.fontawesome.com/97dba172ac.js"></script>
+            <script src="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.5.0/js/bootstrap4-toggle.min.js"></script>
+
+
+            <!-- others plugins -->
+            <script defer src="{{ asset('assets/js/plugins.js') }}"></script>
+            <script defer src="{{ asset('assets/js/scripts.js') }}"></script>
+
+            <script>
+                $('body').on('click', '[data-toggle="modal"]', function () {
+                    $($(this).data("target") + ' .modal-content').html('<div class="modal-body"><div class="spinner-border mx-auto d-block" role="status">\
+                                <span class="sr-only">Loading...</span>\
+                            </div></div>');
+                    $($(this).data("target") + ' .modal-content').load($(this).data("remote"));
+                });
+
+                $('body').on('click', '[data-toggle="modal"]', function () {
+                    $($(this).data("target") + ' .modal-content').html('<div class="modal-body"><div class="spinner-border mx-auto d-block" role="status">\
+                                <span class="sr-only">Loading...</span>\
+                            </div></div>');
+                    $($(this).data("target") + ' .modal-content').load($(this).data("remote"));
+                });
+
+                $('body').on('click', '.deleteItem', function () {
+                    if( confirm( "Êtes vous sur ?" ) ){
+                        $.get( $(this).data("remote") , function( data ) {
+                            window.location.reload(); 
+                        });
+                    }
+                });
+
+                $('body').on('click', '.ajaxdeleteItem', function () {
+                    var itemToDelete = $(this).data("remove");
+                    if( confirm( "Êtes vous sur ?" ) ){
+                        $.get( $(this).data("remote") , function( data ) {
+                            $("#"+itemToDelete).fadeOut(100); 
+                        });
+                    }
+                });
+
+                setTimeout(function(){ $('.notification').fadeOut(2000) }, 3000);
+
+            </script>
+        {% endblock %}
+
+        <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <div class="spinner-border mx-auto d-block" role="status">
+                            <span class="sr-only">Loading...</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> 
+
+        <div class="modal fade bd-example-modal-lg" id="largemodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <div class="spinner-border mx-auto d-block" role="status">
+                            <span class="sr-only">Loading...</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        
+        
+        <div class="clear"></div>
+        <footer>
+            Developped by <a href="https://www.sofirux.com/" target="_blank" title="Sofirux">Sofirux</a>
+        </footer>
     </body>
-</html>
+</html></body></html>

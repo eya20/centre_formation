@@ -1,0 +1,78 @@
+AppBundle\Entity\Formation:
+    type: entity
+    table: formation
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        nom:
+            type: string
+            nullable: false
+            length: 255
+            options:
+                fixed: false
+        dateDebut:
+            type: date
+            nullable: false
+            column: date_debut
+        dateFin:
+            type: date
+            nullable: false
+            column: date_fin
+        salle:
+            type: string
+            nullable: false
+            length: 255
+            options:
+                fixed: false
+        dateSuppression:
+            type: date
+            nullable: true
+            column: date_suppression
+    manyToMany:
+        formateur:
+            targetEntity: Formateur
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: formation
+            joinTable:
+                name: formation_formateur
+                joinColumns:
+                    -
+                        name: formation
+                        referencedColumnName: id
+                        OnDelete: CASCADE
+                inverseJoinColumns:
+                    -
+                        name: formateur
+                        referencedColumnName: id
+                        OnDelete: CASCADE
+            orderBy: null
+        matiere:
+            targetEntity: Matiere
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: formation
+            joinTable:
+                name: formation_matiere
+                joinColumns:
+                    -
+                        name: formation
+                        referencedColumnName: id
+                        OnDelete: CASCADE
+                inverseJoinColumns:
+                    -
+                        name: matiere
+                        referencedColumnName: id
+                        OnDelete: CASCADE
+                        
+            orderBy: null
+    lifecycleCallbacks: {  }

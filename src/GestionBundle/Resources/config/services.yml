@@ -2,3 +2,27 @@ services:
 #    gestion.example:
 #        class: GestionBundle\Example
 #        arguments: ["@service_id", "plain_value", "%parameter%"]
+
+  formateur.service:
+    class:  GestionBundle\Service\FormateurService
+    arguments: [ "@doctrine.orm.entity_manager"  ] 
+
+
+  etudiant.service:
+    class:  GestionBundle\Service\EtudiantService
+    arguments: [ "@doctrine.orm.entity_manager"  ] 
+  formation.service:
+    class:  GestionBundle\Service\FormationService
+    arguments: [ "@doctrine.orm.entity_manager"  ] 
+  matiere.service:
+    class:  GestionBundle\Service\MatiereService
+    arguments: [ "@doctrine.orm.entity_manager"  ] 
+  evaluation.service:
+    class:  GestionBundle\Service\EvaluationService
+    arguments: [ "@doctrine.orm.entity_manager"  ] 
+  listenote.service:
+    class:  GestionBundle\Service\listeNoteService
+    arguments: [ "@doctrine.orm.entity_manager"  ] 
+
+
+
